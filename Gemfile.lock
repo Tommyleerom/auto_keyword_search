@@ -1,4 +1,4 @@
-EM
+GEM
   remote: https://rubygems.org/
   specs:
     actioncable (7.0.1)
@@ -69,6 +69,7 @@ EM
     bootsnap (1.10.2)
       msgpack (~> 1.2)
     builder (3.2.4)
+    childprocess (4.1.0)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     debug (1.4.0)
@@ -147,6 +148,12 @@ EM
     rake (13.0.6)
     reline (0.3.1)
       io-console (~> 0.5)
+    rexml (3.2.5)
+    rubyzip (2.3.2)
+    selenium-webdriver (4.1.0)
+      childprocess (>= 0.5, < 5.0)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2)
     spring (4.0.0)
     strscan (3.0.1)
     thor (1.2.1)
@@ -166,6 +173,7 @@ DEPENDENCIES
   debug
   puma (~> 5.0)
   rails (~> 7.0.1)
+  selenium-webdriver (~> 4.1)
   spring
 
 BUNDLED WITH
