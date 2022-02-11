@@ -4,7 +4,12 @@ require 'selenium-webdriver'
 
   def grabber(log, pas, que)
 
-    driver = Selenium::WebDriver.for :chrome
+    # configure the driver to run in headless mode
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument('--headless')
+    driver = Selenium::WebDriver.for :chrome, options: options
+
+    #driver = Selenium::WebDriver.for :chrome
     driver.navigate.to "http://www.horror.com/forum/"
 
     driver.find_element(name: 'vb_login_username').send_keys(log)
@@ -20,7 +25,13 @@ require 'selenium-webdriver'
     query.submit
 
     arr = []
-    info1 = wait.until { driver.find_elements(:xpath, '//*[@id="threadslist"]/tbody/tr/td').each {|i| arr << i.text}  }
+    info1 = wait.until { driver.find_elements(:xpath, '//*[@id="threadslist"]/tbody/tr/td/div/a').each {|i| arr << i.text}  }
+
+    # title = []
+
+    # info1.each do |i|
+    #   title << i.find_element(:class, 'alt1').text
+    # enduntil { driver.find_elements(:xpath, '//*[@id="threadslist"]/tbody/tr/td').each {|i| arr << i.text}  }
 
     # title = []
 
@@ -31,7 +42,6 @@ require 'selenium-webdriver'
     driver.quit
     #debugger
     arr
-
   end
 
   private
