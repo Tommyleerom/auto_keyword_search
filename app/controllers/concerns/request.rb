@@ -19,11 +19,18 @@ require 'selenium-webdriver'
     query.send_keys(que)
     query.submit
 
-    titles = wait.until { driver.find_element(name: 'td_threadtitle_11817') }
+    arr = []
+    info1 = wait.until { driver.find_elements(:xpath, '//*[@id="threadslist"]/tbody/tr/td').each {|i| arr << i.text}  }
 
-    titles.inspect
+    # title = []
+
+    # info1.each do |i|
+    #   title << i.find_element(:class, 'alt1').text
+    # end
 
     driver.quit
+    #debugger
+    arr
 
   end
 
