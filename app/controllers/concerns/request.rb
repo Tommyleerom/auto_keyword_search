@@ -23,10 +23,11 @@ require 'selenium-webdriver'
     query = driver.find_element(name: 'query')
     query.send_keys(que)
     query.submit
-
+    
     arr = []
     info1 = wait.until { driver.find_elements(:xpath, '//*[@id="threadslist"]/tbody/tr/td/div/a').each {|i| arr << i.text}  }
-
+    title = arr.select.with_index{|_,i| i % 3 == 0}
+    
     # title = []
 
     # info1.each do |i|
@@ -41,7 +42,7 @@ require 'selenium-webdriver'
 
     driver.quit
     #debugger
-    arr
+    title
   end
 
   private
